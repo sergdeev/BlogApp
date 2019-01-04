@@ -1,20 +1,34 @@
 import React, { PureComponent } from 'react'
-
+import CommentList from './CommentList'
 
 
 export default class Article extends PureComponent {
 
-    handleBtnClick = () => this.props.toggleOpen(this.props.article.id)
+    handleClick = () => this.props.toggleOpen(this.props.article.id)
+
+    get body() {
+        const { isOpen, article } = this.props
+        if (!isOpen) return null
+    
+        return (
+          <section>
+            {article.text}
+            <CommentList comments={article.comments} />
+          </section>
+        )
+    }
 
     render() {
         const { article, isOpen } = this.props;
         return (
             <div>
-                <div>
-                    <h3>{article.title}</h3>
-                    <button onClick={this.handleBtnClick}>{isOpen? 'close' : 'open'}</button>
-                </div>
-                {isOpen && <section>{article.text}</section>}
+                <h3>
+                    {article.title}
+                    <button onClick={this.handleClick}>
+                        {isOpen ? 'close' : 'open'}
+                    </button>
+                </h3>
+                {this.body}
             </div>
         )
     }
