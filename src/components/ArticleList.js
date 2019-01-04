@@ -1,29 +1,22 @@
 import React, { Component } from 'react'
 import Article from "./Article"
+import Accordion from "../HOC/Accordion"
 
 
-export default class ArticleList extends Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            articleId: null
-        }
-    }
-
+class ArticleList extends Component {
 
     get body(){
-        return this.props.articles.map((article) => 
+        const { toggleOpenItem, articles, openItemId } = this.props;
+        return articles.map((article) => 
             <li key = {article.id}>
                 <Article 
                     article={article} 
-                    toggleOpen={this.toggleOpenArticle}
-                    isOpen={this.state.articleId === article.id}
+                    toggleOpen={toggleOpenItem}
+                    isOpen={openItemId === article.id}
                 />
             </li>
         )
     }
-
-    toggleOpenArticle = (articleId) => this.setState({articleId})
 
     render() {
         return (
@@ -33,3 +26,6 @@ export default class ArticleList extends Component {
         )
     }
 }
+
+
+export default Accordion(ArticleList);

@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
 
+
+
 export default class Article extends PureComponent {
 
     handleBtnClick = () => this.props.toggleOpen(this.props.article.id)
