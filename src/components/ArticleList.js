@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Article from "./Article"
+import Article from "./article/Article"
 import Accordion from "../HOC/Accordion"
 
 
