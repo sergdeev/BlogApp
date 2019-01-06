@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import CommentList from '../CommentList'
+import CommentList from '../commentList/CommentList'
 import CSSTransition from 'react-addons-css-transition-group'
 import "./style.css"
 
