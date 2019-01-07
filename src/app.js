@@ -14,7 +14,7 @@ class App extends Component {
         <UserForm/>
         <Counter/>
         <Filters articles={articles} />
-        <ArticleList articles={articles} />
+        <ArticleList/>
       </div>
     )
   }
