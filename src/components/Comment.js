@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+
 
 function Comment({ comment }) {
   return (
@@ -9,4 +11,6 @@ function Comment({ comment }) {
   )
 }
 
-export default Comment
+export default connect((state, ownProps) => ({
+  comment: state.comments.find(comment => comment.id === ownProps.id)
+}))(Comment);

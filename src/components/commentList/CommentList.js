@@ -15,9 +15,9 @@ class CommentList extends Component {
 
     const body = (comments && comments.length) ? (
       <ul>
-        {comments.map((comment) => (
-          <li key={comment.id}>
-            <Comment comment={comment} />
+        {this.props.comments.map((id) => (
+          <li key={id}>
+            <Comment id={id} />
           </li>
         ))}
       </ul>
