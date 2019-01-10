@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
-import { connect } from "react-redux"
-import { changeSelection } from "../../actions"
-
+import { connect } from 'react-redux'
+import { changeSelection } from '../../actions'
+import { selectedSelector } from '../../selectors'
+import { articlesSelector } from '../../selectors'
 
 class SelectFilter extends Component {
 
@@ -26,9 +27,9 @@ class SelectFilter extends Component {
   }
 }
 
-const mapStateToProps = (storeState) => ({
-  selected: storeState.filters.selected,
-  articles: storeState.articles
+const mapStateToProps = (state) => ({
+  selected: selectedSelector(state),
+  articles: articlesSelector(state)
 })
 
 

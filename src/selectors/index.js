@@ -21,3 +21,12 @@ export const filteredArticles = createSelector( articlesSelector, dateRangeSelec
                 )
         })
 });
+
+
+//export const commentsSelector = state => state.comments;
+//export const idSelector = (_, props) = props.id;
+
+//export const commentSelector = createSelector(commentsSelector, idSelector, 
+//    (comments, id) => {
+//        return comments.find(comment => comment.id === id)
+//})

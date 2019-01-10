@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import DayPicker, { DateUtils } from 'react-day-picker';
-import { connect } from "react-redux";
-import { changeDateRange } from "../../actions";
+import { connect } from 'react-redux';
+import { changeDateRange } from '../../actions';
+import { dateRangeSelector } from '../../selectors'
 
 import 'react-day-picker/lib/style.css';
 
@@ -29,8 +30,8 @@ class DateRange extends Component {
 }
 
 
-const mapStateToProps = (storeState) => ({
-  range: storeState.filters.dateRange
+const mapStateToProps = (state) => ({
+  range: dateRangeSelector(state)
 });
 
 
