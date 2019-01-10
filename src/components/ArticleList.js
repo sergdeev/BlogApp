@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Article from "./article/Article"
 import Accordion from "../HOC/Accordion"
 import { connect } from 'react-redux'
+import { filteredArticles } from "../selectors"
 
 
 class ArticleList extends Component {
@@ -28,9 +29,10 @@ class ArticleList extends Component {
     }
 }
 
-const mapStateToProps = (storeState) => ({
-    articles: storeState.articles
-})
 
 
-export default connect(mapStateToProps)(Accordion(ArticleList));
+export default connect((storeState) => {
+    return{
+        articles: filteredArticles(storeState)
+    }
+})(Accordion(ArticleList));

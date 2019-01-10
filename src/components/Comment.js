@@ -3,7 +3,8 @@ import React from 'react'
 function Comment({ comment }) {
   return (
     <div>
-      {comment.text} <b>by {comment.user}</b>
+      <div><b>{comment.user}</b></div>
+      {comment.text}
     </div>
   )
 }
