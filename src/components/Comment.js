@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createCommentSelector } from '../selectors'
 
 
 function Comment({ comment }) {
@@ -11,6 +12,13 @@ function Comment({ comment }) {
   )
 }
 
-export default connect((state, ownProps) => ({
-  comment: state.comments.find(comment => comment.id === ownProps.id)
-}))(Comment);
+
+const createMapStateToProps = () => {
+  const commentSelector = createCommentSelector()
+
+  return (state, ownProps) => ({
+    comment: commentSelector(state, ownProps)
+  })
+}
+
+export default connect(createMapStateToProps)(Comment)

@@ -5,7 +5,7 @@ export const articlesSelector = state => state.articles;
 export const dateRangeSelector = state => state.filters.dateRange;
 export const selectedSelector = state => state.filters.selected;
 
-
+    
 
 export const filteredArticles = createSelector( articlesSelector, dateRangeSelector, selectedSelector,
     (articles, dateRange, selected) => {
@@ -23,10 +23,10 @@ export const filteredArticles = createSelector( articlesSelector, dateRangeSelec
 });
 
 
-//export const commentsSelector = state => state.comments;
-//export const idSelector = (_, props) = props.id;
+export const commentsSelector = state => state.comments;
+export const idSelector = (_, props) => props.id;
 
-//export const commentSelector = createSelector(commentsSelector, idSelector, 
-//    (comments, id) => {
-//        return comments.find(comment => comment.id === id)
-//})
+export const createCommentSelector = () =>
+    createSelector(commentsSelector, idSelector, (comments, id) => {
+        return comments.find((comment) => comment.id === id)
+  })
