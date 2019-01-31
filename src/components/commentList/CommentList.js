@@ -3,31 +3,40 @@ import Comment from '../Comment'
 import ToggleOpen from '../../HOC/ToggleOpen'
 import CSSTransition from 'react-addons-css-transition-group'
 import './style.css'
+import CommentForm from '../commentForm'
 
 class CommentList extends Component {
   static defaultProps = {
     comments: []
-  };
-
-  getBody() {
-    const { comments, isOpen } = this.props;
-    if (!isOpen) return null;
-
-    const body = (comments && comments.length) ? (
-      <ul>
-        {this.props.comments.map((id) => (
-          <li key={id}>
-            <Comment id={id} />
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <h3>No comments yet</h3>
-    )
-
-    return <div>{body}</div>
   }
 
+  getBody() {
+    const {
+      article: { comments = [], id },
+      isOpen
+    } = this.props
+    if (!isOpen) return null
+
+    const body =
+      comments && comments.length ? (
+        <ul>
+          {this.props.article.comments.map((id) => (
+            <li key={id}>
+              <Comment id={id} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <h3>No comments yet</h3>
+      )
+
+    return (
+      <div>
+        {body}
+        <CommentForm articleId={id} />
+      </div>
+    )
+  }
 
   render() {
     const { isOpen, toggleOpen } = this.props
@@ -45,7 +54,6 @@ class CommentList extends Component {
       </div>
     )
   }
-
 }
 
 export default ToggleOpen(CommentList)

@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import Select from 'react-select'
 import { connect } from 'react-redux'
 import { changeSelection } from '../../actions'
-import { selectedSelector } from '../../selectors'
-import { articlesSelector } from '../../selectors'
+import { articlesListSelector, selectedSelector } from '../../selectors'
 
 class SelectFilter extends Component {
-
-  handleChange = (selected) => this.props.changeSelection(selected);
+  handleChange = (selected) => this.props.changeSelection(selected)
 
   get options() {
     return this.props.articles.map((article) => ({
@@ -29,8 +27,10 @@ class SelectFilter extends Component {
 
 const mapStateToProps = (state) => ({
   selected: selectedSelector(state),
-  articles: articlesSelector(state)
+  articles: articlesListSelector(state)
 })
 
-
-export default connect(mapStateToProps, {changeSelection})(SelectFilter);
+export default connect(
+  mapStateToProps,
+  { changeSelection }
+)(SelectFilter)
