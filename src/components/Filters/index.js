@@ -3,11 +3,10 @@ import DateRange from './DateRange'
 import SelectFilter from './Select'
 
 class Filters extends Component {
-
   render() {
     return (
       <div>
-        <SelectFilter/>
+        <SelectFilter />
         <DateRange />
       </div>
     )
